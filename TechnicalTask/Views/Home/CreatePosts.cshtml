@@ -1,0 +1,54 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CreatePosts</title>
+</head>
+<body>
+    @*<div class="container body-content">
+        <h3>Спсиок постов</h3>
+        <table class="raz">
+            <tr>
+                <td><p>Заглавие</p></td>
+                <td><p>Описание</p></td>
+                <td><p>Дата создания</p></td>
+                <td></td>
+            </tr>
+            @foreach (var f in ViewBag.Forums)
+            {
+                <tr>
+                    <td><p><b>@f.Title</b></p></td>
+                    <td><p>@f.Description</p></td>
+                    <td><p>@f.Created.ToShortDateString()</p></td>
+                    <td><p><a href="/Home/CreatePosts/@f.Id">Создать пост</a></p></td>
+                </tr>
+            }
+        </table>
+    </div>*@
+    <div class="container body-content">
+        <h3>Форма добавления поста</h3>
+        <form method="post">
+            <input type="hidden" value="@ViewBag.ForumId" name="ForumId" />
+            <table>
+                <tr>
+                    <td><p>Введите тему поста </p></td>
+                    <td><input type="text" name="Title" /> </td>
+                </tr>
+                <tr>
+                    <td><p>Введите содержание поста :</p></td>
+                    <td>
+                        <input type="text" name="Content" />
+                    </td>
+                </tr>
+                <tr><td><input type="submit" value="Отправить" /> </td><td></td></tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>
