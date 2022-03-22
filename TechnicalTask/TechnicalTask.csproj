@@ -136,6 +136,8 @@
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\TopicContext.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserContext.cs" />
+    <Compile Include="Models\UserLoginRegister.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -177,6 +179,8 @@
     <Content Include="Views\Home\CreatePosts.cshtml" />
     <Content Include="Views\Home\ChooseForum.cshtml" />
     <Content Include="Views\Home\CreateTopic.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

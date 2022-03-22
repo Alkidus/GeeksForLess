@@ -9,12 +9,12 @@ namespace TechnicalTask.Models
     {
         // ID пользователя
         public int Id { get; set; }
-        // Имя пользователя
-        public string Name { get; set; }
         // Почта пользователя
         public string Email { get; set; }
         // Пароль пользователя
         public string Password { get; set; }
+        // Возраст пользователя
+        public int Age { get; set; }
 
     }
 }
