@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+
 namespace TechnicalTask.Models
 {
     public class Post
@@ -10,7 +11,7 @@ namespace TechnicalTask.Models
         public string Title { get; set; }
         public string Content { get; set; }
         public DateTime Created { get; set; }
-        public int? ForumId { get; set; }
+        public int ForumId { get; set; }
         //public virtual Forum Forum { get; set; }
         public virtual User User { get; set; }
     }

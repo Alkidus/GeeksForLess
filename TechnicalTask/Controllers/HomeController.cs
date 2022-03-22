@@ -35,7 +35,7 @@ namespace TechnicalTask.Controllers
         }
 
         [HttpGet]
-        public ActionResult CreatePosts(int id)
+        public ActionResult CreatePosts(int id = 1)
         {
             ViewBag.ForumId = id;
             return View();
@@ -44,11 +44,44 @@ namespace TechnicalTask.Controllers
         public string CreatePosts(Post post)
         {
             post.Created = DateTime.Now;
-            // добавляем информацию о покупке в базу данных
+            // добавляем информацию в базу данных
             db.Posts.Add(post);
             // сохраняем в бд все изменения
             db.SaveChanges();
+            System.Threading.Thread.Sleep(2000);
+            Response.Redirect("https://localhost:44368/Home/ChooseForum/" + post.ForumId);
             return "Спасибо, пост: \'" + post.Title + "\', создан и сохранён!";
+            
+
+        }
+        [HttpGet]
+        public ActionResult ChooseForum(int id)
+        {
+            ViewData["ForumId"] = id;
+            // получаем из бд все объекты Forum
+            IEnumerable<Post> posts = db.Posts.Where(p => p.ForumId == id);
+            // передаем все полученный объекты в динамическое свойство Forums в ViewBag
+            ViewBag.Posts = posts;
+            return View();
+        }
+        [HttpGet]
+        public ActionResult CreateTopic()
+        {
+            return View();
+        }
+        [HttpPost]
+        public string CreateTopic(Forum forum)
+        {
+            forum.Created = DateTime.Now;
+            // добавляем информацию в базу данных
+            db.Forums.Add(forum);
+            // сохраняем в бд все изменения
+            db.SaveChanges();
+            System.Threading.Thread.Sleep(2000);
+            Response.Redirect("https://localhost:44368");
+            return "Спасибо, пост: \'" + forum.Title + "\', создан и сохранён!";
+
+
         }
     }
 }

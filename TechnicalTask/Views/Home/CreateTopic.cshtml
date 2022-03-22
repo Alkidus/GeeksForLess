@@ -1,10 +1,14 @@
-﻿<!DOCTYPE html>
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - приложение ASP.NET</title>
+    <meta name="viewport" content="width=device-width" />
+    <title>CreatePosts</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -28,16 +32,27 @@
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - мое приложение ASP.NET</p>
-        </footer>
-    </div>
 
+    <div class="container body-content">
+        <h3>Форма добавления новой темы</h3>
+        <form method="post">
+            <input type="hidden" value="@ViewBag.ForumId" name="ForumId" />
+            <table>
+                <tr>
+                    <td><p>Введите новую тему </p></td>
+                    <td><input type="text" name="Title" /> </td>
+                </tr>
+                <tr>
+                    <td><p>Введите описание темы:</p></td>
+                    <td>
+                        <textarea name="Description"></textarea>
+                    </td>
+                </tr>
+                <tr><td><input type="submit" value="Создать" /> </td><td></td></tr>
+            </table>
+        </form>
+    </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
 </body>
 </html>

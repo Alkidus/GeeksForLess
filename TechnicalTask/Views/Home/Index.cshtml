@@ -20,7 +20,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Имя приложения", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Список тем", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -32,7 +32,7 @@
         </div>
     </div>
     <div class="container body-content">
-        <h3>Спсиок форумов</h3>
+        <h3>Список тем Львовского Форуа "ОТОМОСЁМ"</h3>
         <table class="raz">
             <tr>
                 <td><p>Заглавие</p></td>
@@ -46,10 +46,12 @@
                     <td><p><b>@f.Title</b></p></td>
                     <td><p>@f.Description</p></td>
                     <td><p>@f.Created.ToShortDateString()</p></td>
-                    <td><p><a href="/Home/CreatePosts/@f.Id">Создать пост</a></p></td>
+                    <td><p><a href="/Home/ChooseForum/@f.Id">Выбрать тему</a></p></td>
                 </tr>
             }
         </table>
+        <hr>
+        <p><a href="/Home/CreateTopic">Добвить тему</a></p>
     </div>
     <div class="container body-content">
 

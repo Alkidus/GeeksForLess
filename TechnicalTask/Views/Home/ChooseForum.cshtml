@@ -1,10 +1,14 @@
-﻿<!DOCTYPE html>
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - приложение ASP.NET</title>
+    <meta name="viewport" content="width=device-width" />
+    <title>Список тем форума</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -29,15 +33,42 @@
         </div>
     </div>
     <div class="container body-content">
-        @RenderBody()
+        <h3>Список форумов</h3>
+        <table class="raz">
+            <tr>
+                <td><p>Заглавие</p></td>
+                <td><p>Описание</p></td>
+                <td><p>Дата создания</p></td>
+            </tr>
+            @foreach (var p in ViewBag.Posts)
+            {
+                <tr>
+                    <td><p><b>@p.Title</b></p></td>
+                    <td><p>@p.Content</p></td>
+                    <td><p>@p.Created.ToShortDateString()</p></td>
+                </tr>
+
+            }
+        </table>
+        <hr>
+        <p><a href="/Home/CreatePosts/@ViewData["ForumId"]">Добвить пост</a></p>
+    </div>
+    <div class="container body-content">
+
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - мое приложение ASP.NET</p>
         </footer>
     </div>
-
+    <style>
+        .raz,
+        .raz td {
+            border: 1px solid green;
+            border-spacing: 1em 0.5em;
+            padding: .3em 1em;
+        }
+    </style>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
 </body>
 </html>
