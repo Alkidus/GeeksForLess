@@ -99,11 +99,7 @@ namespace TechnicalTask.Controllers
             {
                 // поиск пользователя в бд
                 User user = null;
-                using (UserContext db = new UserContext())
-                {
-                    user = db.Users.FirstOrDefault(u => u.Email == model.Name && u.Password == model.Password);
-
-                }
+                user = db.Users.FirstOrDefault(u => u.Email == model.Name && u.Password == model.Password);
                 if (user != null)
                 {
                     FormsAuthentication.SetAuthCookie(model.Name, true);
@@ -130,20 +126,13 @@ namespace TechnicalTask.Controllers
             if (ModelState.IsValid)
             {
                 User user = null;
-                using (UserContext db = new UserContext())
-                {
-                    user = db.Users.FirstOrDefault(u => u.Email == model.Name);
-                }
+                user = db.Users.FirstOrDefault(u => u.Email == model.Name);
                 if (user == null)
                 {
-                    // создаем нового пользователя
-                    using (UserContext db = new UserContext())
-                    {
-                        db.Users.Add(new User { Email = model.Name, Password = model.Password, Age = model.Age });
-                        db.SaveChanges();
+                    db.Users.Add(new User { Email = model.Name, Password = model.Password, Age = model.Age });
+                    db.SaveChanges();
 
-                        user = db.Users.Where(u => u.Email == model.Name && u.Password == model.Password).FirstOrDefault();
-                    }
+                    user = db.Users.Where(u => u.Email == model.Name && u.Password == model.Password).FirstOrDefault();
                     // если пользователь удачно добавлен в бд
                     if (user != null)
                     {
