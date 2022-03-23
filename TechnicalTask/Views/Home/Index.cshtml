@@ -1,4 +1,5 @@
-﻿@{
+﻿@model TechnicalTask.Models.User
+@{
     Layout = null;
 }
 
@@ -27,19 +28,17 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Информация", "About", "Home")</li>
                     <li>@Html.ActionLink("Связаться", "Contact", "Home")</li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Logout...", "Logoff")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Login", "Login")</li>
+                        <li>@Html.Label(" | ")</li>
+                        <li>@Html.ActionLink("Register", "Register")</li>
+                    }
                 </ul>
-            </div>
-            <div class="navbar-collapse collapse">
-                @if (User.Identity.IsAuthenticated)
-                {
-                    @Html.ActionLink("logout...", "Logoff")
-                }
-                else
-                {
-                    @Html.ActionLink("login", "Login")
-                    @Html.Label(" | ");
-                    @Html.ActionLink("register", "Register")
-                }
             </div>
         </div>
     </div>
@@ -63,7 +62,10 @@
             }
         </table>
         <hr>
-        <p><a href="/Home/CreateTopic">Добвить тему</a></p>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <p><a href="/Home/CreateTopic">Добвить тему</a></p>
+        }
     </div>
     <div class="container body-content">
 

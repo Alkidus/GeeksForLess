@@ -6,7 +6,7 @@ using System.Data.Entity;
 
 namespace TechnicalTask.Models
 {
-    public class ForumDbInitializer : DropCreateDatabaseAlways<TopicContext>
+    public class ForumDbInitializer : DropCreateDatabaseIfModelChanges<TopicContext>
     {
         protected override void Seed(TopicContext db)
         {

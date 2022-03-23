@@ -56,7 +56,7 @@ namespace TechnicalTask.Controllers
 
         }
         [HttpGet]
-        public ActionResult ChooseForum(int id)
+        public ActionResult ChooseForum(int id = 1)
         {
             ViewData["ForumId"] = id;
             // получаем из бд все объекты Forum

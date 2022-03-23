@@ -28,12 +28,22 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Информация", "About", "Home")</li>
                     <li>@Html.ActionLink("Связаться", "Contact", "Home")</li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Logout...", "Logoff")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Login", "Login")</li>
+                        <li>@Html.Label(" | ")</li>
+                        <li>@Html.ActionLink("Register", "Register")</li>
+                    }
                 </ul>
             </div>
         </div>
     </div>
     <div class="container body-content">
-        <h3>Список форумов</h3>
+        <h3>Список тем форума</h3>
         <table class="raz">
             <tr>
                 <td><p>Заглавие</p></td>
@@ -51,7 +61,11 @@
             }
         </table>
         <hr>
-        <p><a href="/Home/CreatePosts/@ViewData["ForumId"]">Добвить пост</a></p>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <p><a href="/Home/CreatePosts/@ViewData["ForumId"]">Добвить пост</a></p>
+        }
+
     </div>
     <div class="container body-content">
 
